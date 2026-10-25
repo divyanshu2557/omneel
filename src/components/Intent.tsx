@@ -97,7 +97,7 @@ export default function Intent() {
       <div className="mx-auto max-w-[1360px] px-4 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           {/* sticky column */}
-          <div className="lg:col-span-5">
+          <div className="min-w-0 lg:col-span-5">
             <div className="lg:sticky lg:top-28">
               <div data-reveal className="mb-4 flex items-center gap-3 sm:mb-5 sm:gap-4">
                 <span className="label text-cobalt-500">05</span>
@@ -139,7 +139,7 @@ export default function Intent() {
           </div>
 
           {/* flow rail */}
-          <div className="lg:col-span-7">
+          <div className="min-w-0 lg:col-span-7">
             <div className="relative">
               <span
                 aria-hidden
@@ -156,7 +156,7 @@ export default function Intent() {
                     {f.k}
                     <span className="absolute inset-0 -z-10 scale-0 bg-cobalt-500/10 transition-transform duration-500 group-hover:scale-100" />
                   </span>
-                  <div className="flex-1 border-b border-soot-950/12 pb-5 transition-colors duration-400 group-hover:border-soot-950/35 sm:pb-6">
+                  <div className="min-w-0 flex-1 border-b border-soot-950/12 pb-5 transition-colors duration-400 group-hover:border-soot-950/35 sm:pb-6">
                     <h3 className="display-soft text-[18px] text-soot-950 transition-transform duration-500 group-hover:translate-x-1 sm:text-[23px] lg:text-[25px]">
                       {f.t}
                     </h3>

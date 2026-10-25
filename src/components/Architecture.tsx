@@ -81,7 +81,7 @@ export default function Architecture() {
 
         <div className="mt-12 grid gap-10 sm:mt-16 lg:grid-cols-12 lg:gap-14">
           {/* ---------------------------------------------------- the stack */}
-          <div className="lg:col-span-5">
+          <div className="min-w-0 lg:col-span-5">
             <div data-reveal="left" className="relative lg:[perspective:1400px]">
               <div
                 aria-hidden
@@ -168,8 +168,8 @@ export default function Architecture() {
           </div>
 
           {/* ------------------------------------------------- detail panel */}
-          <div className="lg:col-span-7">
-            <div data-reveal="right" className="panel-ink corner-ticks corner-ticks-ink relative h-full overflow-hidden">
+          <div className="min-w-0 lg:col-span-7">
+            <div data-reveal="right" className="panel-ink corner-ticks corner-ticks-ink relative h-full min-w-0 overflow-hidden">
               <span
                 aria-hidden
                 className="pointer-events-none absolute -right-4 -top-10 select-none font-display text-[120px] leading-none opacity-[0.08] transition-all duration-700 sm:-right-6 sm:-top-14 sm:text-[180px]"

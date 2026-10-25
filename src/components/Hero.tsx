@@ -129,7 +129,7 @@ export default function Hero() {
       </div>
 
       <div className="relative mx-auto grid max-w-[1360px] items-center gap-10 px-4 pb-14 pt-10 sm:px-8 sm:pb-20 sm:pt-16 lg:grid-cols-12 lg:gap-10 lg:pb-24 lg:pt-20">
-        <div className="lg:col-span-7">
+        <div className="min-w-0 lg:col-span-7">
           <div
             data-reveal
             className="mb-6 inline-flex items-center gap-2.5 border border-soot-950/15 bg-ivory-50 py-1 pl-2 pr-3.5 shadow-[0_1px_0_rgba(255,255,255,.8)_inset] sm:mb-7 sm:gap-3 sm:py-1.5 sm:pl-2 sm:pr-4"
@@ -217,7 +217,7 @@ export default function Hero() {
         <div
           data-reveal="right"
           style={{ "--rd": "300ms" } as React.CSSProperties}
-          className="lg:col-span-5"
+          className="min-w-0 lg:col-span-5"
         >
           <Console />
         </div>

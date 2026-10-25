@@ -256,7 +256,7 @@ export default function Agents() {
 
         {/* ---------------------------------------------------- selected agent */}
         <div className="mt-6 grid gap-6 lg:grid-cols-12">
-          <div className="panel-ink corner-ticks corner-ticks-ink p-5 sm:p-7 lg:col-span-7">
+          <div className="min-w-0 panel-ink corner-ticks corner-ticks-ink p-5 sm:p-7 lg:col-span-7">
             <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
               <span
                 className="label-sm px-2.5 py-1"
@@ -285,7 +285,7 @@ export default function Agents() {
             </div>
           </div>
 
-          <div className="grid gap-px overflow-hidden border border-soot-950/12 bg-soot-950/12 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1">
+          <div className="min-w-0 grid gap-px overflow-hidden border border-soot-950/12 bg-soot-950/12 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1">
             {PROTOCOLS.slice(0, 4).map((p, i) => (
               <div
                 key={p.name}

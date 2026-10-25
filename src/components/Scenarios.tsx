@@ -160,7 +160,7 @@ export default function Scenarios() {
                     {s.tag}
                   </span>
                   <span
-                    className={`display-soft flex-1 text-[clamp(1.05rem,2.4vw,1.9rem)] leading-tight transition-colors duration-400 ${
+                    className={`display-soft min-w-0 flex-1 text-[clamp(1.05rem,2.4vw,1.9rem)] leading-tight transition-colors duration-400 ${
                       on ? "text-soot-950" : "text-soot-600 group-hover:text-soot-900"
                     }`}
                   >
@@ -193,8 +193,8 @@ export default function Scenarios() {
                   style={{ gridTemplateRows: on ? "1fr" : "0fr", opacity: on ? 1 : 0 }}
                 >
                   <div className="overflow-hidden">
-                    <div className="grid gap-6 pb-7 pl-8 pr-1 sm:gap-8 sm:pb-9 sm:pl-14 sm:pr-0 md:grid-cols-12">
-                      <div className="md:col-span-7">
+                    <div className="grid gap-6 pb-6 pl-2 pr-1 sm:gap-8 sm:pb-9 sm:pl-10 sm:pr-0 md:grid-cols-12">
+                      <div className="min-w-0 md:col-span-7">
                         <p className="label-sm mb-3 text-soot-400 sm:mb-4">compiled plan</p>
                         <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                           {s.plan.map((p, k) => (

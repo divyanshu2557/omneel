@@ -332,7 +332,7 @@ export default function OS() {
         {/* ---------------------------------------------------- the os frame */}
         <div
           data-reveal="scale"
-          className="panel-ink corner-ticks corner-ticks-ink mt-10 overflow-hidden sm:mt-14"
+          className="panel-ink corner-ticks corner-ticks-ink mt-10 min-w-0 overflow-hidden sm:mt-14"
         >
           <div className="flex items-center gap-3 border-b border-white/[0.09] bg-white/[0.03] px-3.5 py-2.5 sm:gap-4 sm:px-5">
             <span className="flex gap-1.5">
@@ -346,9 +346,9 @@ export default function OS() {
             <span className="ml-auto font-mono text-[11px] tabular-nums text-mist-500">{clock}</span>
           </div>
 
-          <div className="grid lg:grid-cols-[190px_1fr_240px]">
+          <div className="grid min-w-0 lg:grid-cols-[190px_1fr_240px]">
             {/* rail */}
-            <div className="scroll-touch flex gap-px overflow-x-auto border-b border-white/[0.07] bg-white/[0.012] lg:flex-col lg:overflow-visible lg:border-b-0 lg:border-r">
+            <div className="scroll-touch flex min-w-0 gap-px overflow-x-auto border-b border-white/[0.07] bg-white/[0.012] lg:flex-col lg:overflow-visible lg:border-b-0 lg:border-r">
               {VIEWS.map((v) => {
                 const on = v.id === view;
                 return (
@@ -374,8 +374,8 @@ export default function OS() {
             </div>
 
             {/* main */}
-            <div className="min-h-[380px] px-3.5 py-4 sm:min-h-[420px] sm:px-6 sm:py-6">
-              <div key={view} className="anim-view">
+            <div className="min-w-0 min-h-[380px] px-3.5 py-4 sm:min-h-[420px] sm:px-6 sm:py-6">
+              <div key={view} className="anim-view min-w-0">
                 {view === "session" && <SessionView />}
                 {view === "bridge" && <BridgeView />}
                 {view === "resources" && <GovernorView />}
@@ -385,7 +385,7 @@ export default function OS() {
             </div>
 
             {/* side telemetry */}
-            <div className="border-t border-white/[0.07] bg-white/[0.012] px-3.5 py-4 sm:px-5 sm:py-5 lg:border-l lg:border-t-0">
+            <div className="min-w-0 border-t border-white/[0.07] bg-white/[0.012] px-3.5 py-4 sm:px-5 sm:py-5 lg:border-l lg:border-t-0">
               <p className="label-sm mb-3.5 text-mist-700">active agents</p>
               <ul className="space-y-2.5 sm:space-y-3">
                 {AGENTS.map((a) => (
