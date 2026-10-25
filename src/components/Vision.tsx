@@ -6,15 +6,15 @@ function Metric({ m, i }: { m: (typeof METRICS)[number]; i: number }) {
   const { ref, inView } = useInView<HTMLDivElement>(0.5);
   const v = useCountUp(m.value, inView, 1400 + i * 180);
   return (
-    <div ref={ref} className="group px-5 py-7 transition-colors duration-500 hover:bg-soot-850 sm:px-7">
-      <div className="font-display text-[clamp(2.4rem,5vw,3.6rem)] leading-none text-mist-50">
+    <div ref={ref} className="group px-4 py-5 transition-colors duration-500 hover:bg-soot-850 sm:px-7 sm:py-7">
+      <div className="font-display text-[clamp(2.1rem,4.6vw,3.6rem)] leading-none text-mist-50">
         <span className="tnum">{Math.round(v)}</span>
         <span className="text-brass-400">{m.suffix}</span>
       </div>
-      <div className="label-sm mt-3 text-mist-300 transition-colors duration-500 group-hover:text-brass-400">
+      <div className="label-sm mt-2.5 text-mist-300 transition-colors duration-500 group-hover:text-brass-400 sm:mt-3">
         {m.label}
       </div>
-      <div className="mt-1.5 font-mono text-[11px] text-mist-700">{m.sub}</div>
+      <div className="mt-1 font-mono text-[10.5px] text-mist-700 sm:mt-1.5 sm:text-[11px]">{m.sub}</div>
     </div>
   );
 }
@@ -37,7 +37,7 @@ const OMNEEL = [
 
 export default function Vision() {
   return (
-    <section id="vision" className="relative overflow-hidden bg-soot-950 py-24 sm:py-32">
+    <section id="vision" className="relative overflow-hidden bg-soot-950 py-16 sm:py-24 lg:py-32">
       <div
         aria-hidden
         className="absolute inset-0 opacity-[0.55]"
@@ -50,27 +50,27 @@ export default function Vision() {
       />
       <div
         aria-hidden
-        className="anim-breathe absolute -right-40 -top-40 h-[520px] w-[520px] rounded-full blur-[110px]"
+        className="anim-breathe absolute -right-40 -top-40 h-[400px] w-[400px] rounded-full blur-[100px] sm:h-[520px] sm:w-[520px] sm:blur-[110px]"
         style={{ background: "#1F3CE0", opacity: 0.3 }}
       />
       <div
         aria-hidden
-        className="anim-breathe absolute -bottom-52 -left-32 h-[520px] w-[520px] rounded-full blur-[120px]"
+        className="anim-breathe absolute -bottom-52 -left-32 h-[400px] w-[400px] rounded-full blur-[100px] sm:h-[520px] sm:w-[520px] sm:blur-[120px]"
         style={{ background: "#B8791A", opacity: 0.2, animationDelay: "2s" }}
       />
 
-      <div className="relative mx-auto max-w-[1360px] px-5 sm:px-8">
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+      <div className="relative mx-auto max-w-[1360px] px-4 sm:px-8">
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-10">
           <div className="lg:col-span-8">
-            <div data-reveal className="mb-6 flex items-center gap-4">
+            <div data-reveal className="mb-4 flex items-center gap-3 sm:mb-6 sm:gap-4">
               <span className="label text-brass-400">07</span>
-              <span className="h-px w-10 bg-white/25" />
+              <span className="h-px w-8 bg-white/25 sm:w-10" />
               <span className="label text-mist-500">the long view</span>
             </div>
             <h2
               data-reveal
               style={{ "--rd": "80ms" } as React.CSSProperties}
-              className="font-display text-[clamp(2.3rem,6vw,5.2rem)] leading-[0.94] text-mist-50"
+              className="font-display text-[clamp(2.1rem,5.5vw,5.2rem)] leading-[0.94] text-mist-50"
             >
               Stop operating tools.
               <br />
@@ -80,7 +80,7 @@ export default function Vision() {
           <p
             data-reveal
             style={{ "--rd": "160ms" } as React.CSSProperties}
-            className="text-[15.5px] leading-[1.8] text-mist-300 lg:col-span-4 lg:pb-3"
+            className="text-[14.5px] leading-[1.75] text-mist-300 sm:text-[15.5px] sm:leading-[1.8] lg:col-span-4 lg:pb-3"
           >
             The long-term vision of Omneel Tech is a new computing paradigm: you communicate
             intent, and the ecosystem coordinates the applications, agents, systems and resources
@@ -91,7 +91,7 @@ export default function Vision() {
         {/* metrics */}
         <div
           data-reveal
-          className="mt-16 grid grid-cols-2 gap-px overflow-hidden border border-white/[0.14] bg-white/[0.14] lg:grid-cols-4"
+          className="mt-12 grid grid-cols-2 gap-px overflow-hidden border border-white/[0.14] bg-white/[0.14] sm:mt-16 lg:grid-cols-4"
         >
           {METRICS.map((m, i) => (
             <div key={m.label} className="bg-soot-950">
@@ -104,19 +104,19 @@ export default function Vision() {
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
           <div
             data-reveal="left"
-            className="relative overflow-hidden border border-white/[0.12] bg-soot-850 p-7 sm:p-9"
+            className="relative overflow-hidden border border-white/[0.12] bg-soot-850 p-5 sm:p-7 md:p-9"
           >
             <span className="label-sm text-mist-700">today · the switchboard</span>
-            <h3 className="display-soft mt-3 text-[26px] text-mist-500">
+            <h3 className="display-soft mt-3 text-[22px] text-mist-500 sm:text-[26px]">
               Humans as the integration layer
             </h3>
-            <ul className="mt-7 space-y-3.5">
+            <ul className="mt-6 space-y-3 sm:mt-7 sm:space-y-3.5">
               {TODAY.map((t) => (
                 <li key={t} className="group flex items-start gap-3">
                   <span className="mt-[3px] text-mist-700 transition-colors group-hover:text-vermilion-400">
                     <IconClose size={14} />
                   </span>
-                  <span className="text-[14px] leading-relaxed text-mist-500 transition-colors duration-300 group-hover:text-mist-300">
+                  <span className="text-[13.5px] leading-relaxed text-mist-500 transition-colors duration-300 group-hover:text-mist-300 sm:text-[14px]">
                     {t}
                   </span>
                 </li>
@@ -127,21 +127,21 @@ export default function Vision() {
           <div
             data-reveal="right"
             style={{ "--rd": "100ms" } as React.CSSProperties}
-            className="relative overflow-hidden bg-ivory-50 p-7 text-soot-900 sm:p-9"
+            className="relative overflow-hidden bg-ivory-50 p-5 text-soot-900 sm:p-7 md:p-9"
           >
             <div aria-hidden className="grid-fine-ink absolute inset-0 opacity-70" />
             <div className="relative">
               <span className="label-sm text-cobalt-500">with omneel · the substrate</span>
-              <h3 className="display-soft mt-3 text-[26px] text-soot-950">
+              <h3 className="display-soft mt-3 text-[22px] text-soot-950 sm:text-[26px]">
                 Intent as the integration layer
               </h3>
-              <ul className="mt-7 space-y-3.5">
+              <ul className="mt-6 space-y-3 sm:mt-7 sm:space-y-3.5">
                 {OMNEEL.map((t) => (
                   <li key={t} className="group flex items-start gap-3">
                     <span className="mt-[3px] text-pine-600 transition-transform duration-300 group-hover:scale-125">
                       <IconCheck size={14} />
                     </span>
-                    <span className="text-[14px] leading-relaxed text-soot-600 transition-colors duration-300 group-hover:text-soot-950">
+                    <span className="text-[13.5px] leading-relaxed text-soot-600 transition-colors duration-300 group-hover:text-soot-950 sm:text-[14px]">
                       {t}
                     </span>
                   </li>
@@ -153,10 +153,10 @@ export default function Vision() {
 
         <p
           data-reveal
-          className="display-soft mt-14 max-w-3xl text-[clamp(1.4rem,2.6vw,2.1rem)] leading-[1.35] text-mist-50"
+          className="display-soft mt-12 max-w-3xl text-[clamp(1.3rem,2.6vw,2.1rem)] leading-[1.35] text-mist-50 sm:mt-14"
         >
           In one line:{" "}
-          <span className="relative inline-block">
+          <span className="relative inline-block max-w-full">
             Omneel is an AI-native computing ecosystem where languages, operating systems, agents
             and applications converge around human intent.
             <svg

@@ -101,20 +101,20 @@ export default function Agents() {
   return (
     <section
       id="agents"
-      className="relative scroll-mt-24 border-t border-soot-950/12 py-24 sm:py-32"
+      className="relative scroll-mt-20 border-t border-soot-950/12 py-16 sm:py-24 lg:py-32"
     >
-      <div className="mx-auto max-w-[1360px] px-5 sm:px-8">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+      <div className="mx-auto max-w-[1360px] px-4 sm:px-8">
+        <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-8">
           <div className="lg:col-span-7">
-            <div data-reveal className="mb-5 flex items-center gap-4">
+            <div data-reveal className="mb-4 flex items-center gap-3 sm:mb-5 sm:gap-4">
               <span className="label text-cobalt-500">04</span>
-              <span className="h-px w-10 bg-soot-950/25" />
+              <span className="h-px w-8 bg-soot-950/25 sm:w-10" />
               <span className="label text-soot-400">agentic ai layer</span>
             </div>
             <h2
               data-reveal
               style={{ "--rd": "80ms" } as React.CSSProperties}
-              className="font-display text-[clamp(2.1rem,4.6vw,3.9rem)] text-soot-950"
+              className="font-display text-[clamp(1.85rem,4.4vw,3.9rem)] text-soot-950"
             >
               A hierarchy that
               <br />
@@ -124,7 +124,7 @@ export default function Agents() {
           <p
             data-reveal
             style={{ "--rd": "160ms" } as React.CSSProperties}
-            className="text-[15px] leading-[1.8] text-soot-600 lg:col-span-5 lg:pb-2"
+            className="text-[14.5px] leading-[1.75] text-soot-600 sm:text-[15px] sm:leading-[1.8] lg:col-span-5 lg:pb-2"
           >
             Autonomous agents fail quietly when they work alone. Omneel runs them as a governed
             organisation — principals delegate, specialists execute, critics object, and everything
@@ -133,7 +133,7 @@ export default function Agents() {
         </div>
 
         {/* ------------------------------------------------------ the diagram */}
-        <div data-reveal="scale" className="panel mt-14 hidden overflow-hidden p-6 lg:block">
+        <div data-reveal="scale" className="panel mt-10 hidden overflow-hidden p-6 sm:mt-14 lg:block">
           <div ref={diagramRef} className="relative h-[470px]">
             <svg
               aria-hidden
@@ -215,48 +215,59 @@ export default function Agents() {
           </div>
         </div>
 
-        {/* ------------------------------------------------- mobile tier list */}
-        <div className="mt-10 space-y-3 lg:hidden">
-          {NODES.map((n) => (
-            <button
-              key={n.id}
-              onClick={() => setSel(n.id)}
-              className="flex w-full items-center gap-3 border px-4 py-3 text-left transition-colors"
-              style={{
-                borderColor: sel === n.id ? "#0e0f12" : "rgba(8,9,10,.14)",
-                background: sel === n.id ? "#0e0f12" : "#fcfaf5",
-              }}
-            >
-              <span
-                className="h-1.5 w-1.5 rounded-full"
-                style={{ background: sel === n.id ? n.cd : n.c }}
-              />
-              <span
-                className={`font-mono text-[12.5px] ${sel === n.id ? "text-ivory-50" : "text-soot-800"}`}
-              >
-                {n.name}
-              </span>
-              <span className="label-sm ml-auto" style={{ color: sel === n.id ? n.cd : "#8e939c" }}>
-                {n.tier}
-              </span>
-            </button>
-          ))}
+        {/* ------------------------------------------------- mobile agent selector grid */}
+        <div className="mt-8 lg:hidden">
+          <p className="label-sm mb-3 text-soot-400">select an agent to inspect</p>
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-2.5">
+            {NODES.map((n) => {
+              const on = sel === n.id;
+              return (
+                <button
+                  key={n.id}
+                  onClick={() => setSel(n.id)}
+                  className="flex items-center gap-2 border p-2.5 text-left transition-all duration-300 sm:p-3"
+                  style={{
+                    borderColor: on ? "#0e0f12" : "rgba(8,9,10,.14)",
+                    background: on ? "#0e0f12" : "#fcfaf5",
+                    boxShadow: on ? "0 8px 16px -8px rgba(8,9,10,.6)" : "none",
+                  }}
+                >
+                  <span
+                    className="h-2 w-2 shrink-0 rounded-full"
+                    style={{ background: on ? n.cd : n.c }}
+                  />
+                  <div className="min-w-0 flex-1">
+                    <div
+                      className={`truncate font-mono text-[11.5px] sm:text-[12px] ${
+                        on ? "text-ivory-50 font-medium" : "text-soot-800"
+                      }`}
+                    >
+                      {n.name}
+                    </div>
+                    <div className="label-sm text-[8.5px] truncate" style={{ color: on ? n.cd : "#8e939c" }}>
+                      {n.tier}
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* ---------------------------------------------------- selected agent */}
         <div className="mt-6 grid gap-6 lg:grid-cols-12">
-          <div className="panel-ink corner-ticks corner-ticks-ink p-7 lg:col-span-7">
-            <div className="flex flex-wrap items-center gap-3">
+          <div className="panel-ink corner-ticks corner-ticks-ink p-5 sm:p-7 lg:col-span-7">
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
               <span
                 className="label-sm px-2.5 py-1"
                 style={{ background: `${active.cd}22`, color: active.cd }}
               >
                 {active.tier}
               </span>
-              <h3 className="font-display text-[26px] text-mist-50">{active.name}</h3>
+              <h3 className="font-display text-[22px] text-mist-50 sm:text-[26px]">{active.name}</h3>
             </div>
-            <p className="mt-4 max-w-xl text-[14.5px] leading-[1.8] text-mist-300">{active.duty}</p>
-            <div className="mt-6 flex flex-wrap gap-2.5">
+            <p className="mt-3.5 max-w-xl text-[13.5px] leading-[1.75] text-mist-300 sm:mt-4 sm:text-[14.5px] sm:leading-[1.8]">{active.duty}</p>
+            <div className="mt-5 flex flex-wrap gap-2 sm:mt-6 sm:gap-2.5">
               {[
                 ["model", active.model],
                 ["budget", active.budget],
@@ -264,10 +275,10 @@ export default function Agents() {
               ].map(([k, v]) => (
                 <span
                   key={k}
-                  className="border border-white/[0.12] px-3 py-1.5 font-mono text-[11px] text-mist-300"
+                  className="border border-white/[0.12] px-2.5 py-1 font-mono text-[10.5px] text-mist-300 sm:px-3 sm:py-1.5 sm:text-[11px]"
                 >
                   <span className="text-mist-700">{k}</span>
-                  <span className="mx-1.5 text-white/20">|</span>
+                  <span className="mx-1 text-white/20 sm:mx-1.5">|</span>
                   {v}
                 </span>
               ))}
@@ -280,15 +291,15 @@ export default function Agents() {
                 key={p.name}
                 data-reveal
                 style={{ "--rd": `${i * 70}ms` } as React.CSSProperties}
-                className="group bg-ivory-50 p-5 transition-colors duration-400 hover:bg-ivory-200"
+                className="group bg-ivory-50 p-4 transition-colors duration-400 hover:bg-ivory-200 sm:p-5"
               >
-                <div className="flex items-baseline gap-3">
+                <div className="flex items-baseline gap-2.5 sm:gap-3">
                   <span className="label-sm text-soot-400 transition-colors group-hover:text-vermilion-500">
                     p{i + 1}
                   </span>
-                  <h4 className="display-soft text-[17px] text-soot-950">{p.name}</h4>
+                  <h4 className="display-soft text-[16px] text-soot-950 sm:text-[17px]">{p.name}</h4>
                 </div>
-                <p className="mt-2 text-[13px] leading-relaxed text-soot-500 transition-colors duration-300 group-hover:text-soot-700">
+                <p className="mt-1.5 text-[12.5px] leading-relaxed text-soot-500 transition-colors duration-300 group-hover:text-soot-700 sm:mt-2 sm:text-[13px]">
                   {p.detail}
                 </p>
               </div>

@@ -92,8 +92,8 @@ const StatePill = ({ s }: { s: string }) => {
 function SessionView() {
   return (
     <div>
-      <div className="flex flex-wrap items-baseline gap-3 border-b border-white/[0.06] pb-4">
-        <h4 className="font-display text-[22px] text-mist-50">close-the-quarter</h4>
+      <div className="flex flex-wrap items-baseline gap-2.5 border-b border-white/[0.06] pb-3.5 sm:gap-3 sm:pb-4">
+        <h4 className="font-display text-[20px] text-mist-50 sm:text-[22px]">close-the-quarter</h4>
         <span className="label-sm text-mist-700">plan #0x4f2a · 6 steps · 4 agents</span>
         <span className="ml-auto flex items-center gap-2">
           <span className="anim-meter h-1.5 w-1.5 rounded-full bg-signal-400" />
@@ -104,18 +104,42 @@ function SessionView() {
         {STEPS.map((s, i) => (
           <li
             key={i}
-            className="group flex items-center gap-4 py-3 transition-colors duration-300 hover:bg-white/[0.025]"
+            className="group py-3 transition-colors duration-300 hover:bg-white/[0.025]"
           >
-            <span className="label-sm w-5 text-mist-700">{String(i + 1).padStart(2, "0")}</span>
-            <span className="w-24 shrink-0 font-mono text-[11.5px] text-iris-400">{s.agent}</span>
-            <span className="flex-1 truncate text-[13.5px] text-mist-300 group-hover:text-mist-50">
-              {s.task}
-            </span>
-            <span className="hidden w-14 text-right font-mono text-[11px] text-mist-700 sm:block">
-              {s.ms}
-              {s.ms !== "—" && s.ms !== "approval" ? "ms" : ""}
-            </span>
-            <StatePill s={s.state} />
+            {/* Mobile layout */}
+            <div className="flex flex-col gap-1.5 sm:hidden">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <span className="label-sm text-mist-700">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="font-mono text-[11.5px] text-iris-400">{s.agent}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  {s.ms !== "—" && (
+                    <span className="font-mono text-[10px] text-mist-700">
+                      {s.ms}{s.ms !== "approval" ? "ms" : ""}
+                    </span>
+                  )}
+                  <StatePill s={s.state} />
+                </div>
+              </div>
+              <p className="text-[13px] leading-snug text-mist-300 group-hover:text-mist-50 pl-6">
+                {s.task}
+              </p>
+            </div>
+
+            {/* Desktop / tablet layout */}
+            <div className="hidden sm:flex sm:items-center sm:gap-4">
+              <span className="label-sm w-5 text-mist-700">{String(i + 1).padStart(2, "0")}</span>
+              <span className="w-24 shrink-0 font-mono text-[11.5px] text-iris-400">{s.agent}</span>
+              <span className="flex-1 truncate text-[13.5px] text-mist-300 group-hover:text-mist-50">
+                {s.task}
+              </span>
+              <span className="w-16 text-right font-mono text-[11px] text-mist-700">
+                {s.ms}
+                {s.ms !== "—" && s.ms !== "approval" ? "ms" : ""}
+              </span>
+              <StatePill s={s.state} />
+            </div>
           </li>
         ))}
       </ul>
@@ -126,26 +150,26 @@ function SessionView() {
 function BridgeView() {
   return (
     <div>
-      <div className="flex flex-wrap items-baseline gap-3 border-b border-white/[0.06] pb-4">
-        <h4 className="font-display text-[22px] text-mist-50">App Bridge</h4>
-        <span className="label-sm text-mist-700">140+ connectors · one capability model</span>
+      <div className="flex flex-wrap items-baseline gap-2.5 border-b border-white/[0.06] pb-3.5 sm:gap-3 sm:pb-4">
+        <h4 className="font-display text-[20px] text-mist-50 sm:text-[22px]">App Bridge</h4>
+        <span className="label-sm text-mist-700">140+ connectors · one model</span>
         <span className="ml-auto label-sm text-aqua-400">all healthy</span>
       </div>
-      <div className="grid grid-cols-2 gap-2 pt-4 sm:grid-cols-4">
+      <div className="grid grid-cols-2 gap-2 pt-4 sm:grid-cols-3 lg:grid-cols-4">
         {CONNECTORS.map((c, i) => (
           <span
             key={c}
-            className="group relative cursor-default overflow-hidden border border-white/[0.08] bg-white/[0.015] px-3 py-2.5 text-[12.5px] text-mist-300 transition-all duration-300 hover:-translate-y-0.5 hover:border-aqua-400/45 hover:bg-aqua-400/[0.07] hover:text-mist-50"
+            className="group relative cursor-default overflow-hidden border border-white/[0.08] bg-white/[0.015] px-2.5 py-2 text-[11.5px] text-mist-300 transition-all duration-300 hover:-translate-y-0.5 hover:border-aqua-400/45 hover:bg-aqua-400/[0.07] hover:text-mist-50 sm:px-3 sm:py-2.5 sm:text-[12.5px]"
             style={{ transitionDelay: `${i * 4}ms` }}
           >
-            <span className="flex items-center gap-2">
-              <i className="h-1 w-1 rounded-full bg-aqua-400/60 transition-all duration-300 group-hover:bg-aqua-400 group-hover:shadow-[0_0_8px_#4FE3C1]" />
-              {c}
+            <span className="flex items-center gap-2 truncate">
+              <i className="h-1 w-1 shrink-0 rounded-full bg-aqua-400/60 transition-all duration-300 group-hover:bg-aqua-400 group-hover:shadow-[0_0_8px_#4FE3C1]" />
+              <span className="truncate">{c}</span>
             </span>
           </span>
         ))}
       </div>
-      <p className="pt-4 font-mono text-[11px] text-mist-700">
+      <p className="pt-4 font-mono text-[10.5px] text-mist-700 sm:text-[11px]">
         every connector is typed: agents call capabilities, never raw APIs
       </p>
     </div>
@@ -165,7 +189,7 @@ function Meter({ k, base, spread, c }: { k: string; base: number; spread: number
     <div>
       <div className="flex items-baseline justify-between">
         <span className="label-sm text-mist-500">{k}</span>
-        <span className="tnum font-mono text-[13px]" style={{ color: c }}>
+        <span className="tnum font-mono text-[12.5px] sm:text-[13px]" style={{ color: c }}>
           {v.toFixed(1)}%
         </span>
       </div>
@@ -186,24 +210,24 @@ function Meter({ k, base, spread, c }: { k: string; base: number; spread: number
 function GovernorView() {
   return (
     <div>
-      <div className="flex flex-wrap items-baseline gap-3 border-b border-white/[0.06] pb-4">
-        <h4 className="font-display text-[22px] text-mist-50">Resource Governor</h4>
-        <span className="label-sm text-mist-700">cost ceiling $180/day · 62% consumed</span>
+      <div className="flex flex-wrap items-baseline gap-2.5 border-b border-white/[0.06] pb-3.5 sm:gap-3 sm:pb-4">
+        <h4 className="font-display text-[20px] text-mist-50 sm:text-[22px]">Resource Governor</h4>
+        <span className="label-sm text-mist-700">ceiling $180/day · 62% consumed</span>
       </div>
-      <div className="grid gap-4 pt-5 sm:grid-cols-2">
+      <div className="grid gap-3.5 pt-4 sm:grid-cols-2 sm:gap-4 sm:pt-5">
         {METERS.map((m) => (
           <Meter key={m.k} {...m} />
         ))}
       </div>
-      <div className="mt-6 grid grid-cols-3 gap-px overflow-hidden border border-white/[0.07] bg-white/[0.07]">
+      <div className="mt-5 grid grid-cols-3 gap-px overflow-hidden border border-white/[0.07] bg-white/[0.07] sm:mt-6">
         {[
           ["sandboxes", "7"],
           ["preempted", "0"],
           ["throttle", "none"],
         ].map(([k, v]) => (
-          <div key={k} className="bg-soot-950/70 px-3 py-3">
-            <div className="font-display text-[19px] text-mist-50">{v}</div>
-            <div className="label-sm mt-1 text-mist-700">{k}</div>
+          <div key={k} className="bg-soot-950/70 p-2.5 text-center sm:p-3 sm:text-left">
+            <div className="font-display text-[17px] text-mist-50 sm:text-[19px]">{v}</div>
+            <div className="label-sm mt-0.5 text-mist-700">{k}</div>
           </div>
         ))}
       </div>
@@ -214,25 +238,25 @@ function GovernorView() {
 function SandboxView() {
   return (
     <div>
-      <div className="flex flex-wrap items-baseline gap-3 border-b border-white/[0.06] pb-4">
-        <h4 className="font-display text-[22px] text-mist-50">Sandboxes</h4>
+      <div className="flex flex-wrap items-baseline gap-2.5 border-b border-white/[0.06] pb-3.5 sm:gap-3 sm:pb-4">
+        <h4 className="font-display text-[20px] text-mist-50 sm:text-[22px]">Sandboxes</h4>
         <span className="label-sm text-mist-700">every action isolated & recorded</span>
       </div>
       <ul className="divide-y divide-white/[0.05] pt-1">
         {SANDBOXES.map((s) => (
           <li
             key={s.id}
-            className="group flex flex-wrap items-center gap-x-5 gap-y-1 py-3 transition-colors hover:bg-white/[0.025]"
+            className="group flex flex-wrap items-center gap-x-3 gap-y-1 py-2.5 transition-colors hover:bg-white/[0.025] sm:gap-x-5 sm:py-3"
           >
-            <span className="font-mono text-[12px] text-mist-50 group-hover:text-aqua-300">
+            <span className="font-mono text-[11.5px] text-mist-50 group-hover:text-aqua-300 sm:text-[12px]">
               {s.id}
             </span>
-            <span className="font-mono text-[11.5px] text-mist-500">{s.image}</span>
-            <span className="border border-white/[0.1] px-2 py-[2px] font-mono text-[10px] text-mist-500">
+            <span className="font-mono text-[11px] text-mist-500 sm:text-[11.5px]">{s.image}</span>
+            <span className="border border-white/[0.1] px-1.5 py-[2px] font-mono text-[9.5px] text-mist-500 sm:px-2 sm:text-[10px]">
               {s.iso}
             </span>
             <span className="hidden font-mono text-[11px] text-mist-700 md:block">{s.net}</span>
-            <span className="ml-auto font-mono text-[11.5px] text-signal-400">{s.t}</span>
+            <span className="ml-auto font-mono text-[11px] text-signal-400 sm:text-[11.5px]">{s.t}</span>
           </li>
         ))}
       </ul>
@@ -243,20 +267,20 @@ function SandboxView() {
 function AuditView() {
   return (
     <div>
-      <div className="flex flex-wrap items-baseline gap-3 border-b border-white/[0.06] pb-4">
-        <h4 className="font-display text-[22px] text-mist-50">Audit Ledger</h4>
+      <div className="flex flex-wrap items-baseline gap-2.5 border-b border-white/[0.06] pb-3.5 sm:gap-3 sm:pb-4">
+        <h4 className="font-display text-[20px] text-mist-50 sm:text-[22px]">Audit Ledger</h4>
         <span className="label-sm text-mist-700">append-only · hash-chained</span>
       </div>
       <ul className="divide-y divide-white/[0.05] pt-1">
         {AUDIT.map((a) => (
           <li
             key={a.h}
-            className="group flex flex-wrap items-center gap-x-4 gap-y-1 py-3 transition-colors hover:bg-white/[0.025]"
+            className="group flex flex-wrap items-center gap-x-3 gap-y-1.5 py-2.5 transition-colors hover:bg-white/[0.025] sm:gap-x-4 sm:py-3"
           >
-            <span className="font-mono text-[11.5px] text-mist-700">{a.h}</span>
-            <span className="font-mono text-[11.5px] text-iris-400">{a.who}</span>
-            <span className="flex-1 truncate text-[13px] text-mist-300">{a.act}</span>
-            <span className={`font-mono text-[11px] uppercase tracking-[0.14em] ${a.c}`}>
+            <span className="font-mono text-[11px] text-mist-700 sm:text-[11.5px]">{a.h}</span>
+            <span className="font-mono text-[11px] text-iris-400 sm:text-[11.5px]">{a.who}</span>
+            <span className="min-w-[140px] flex-1 truncate text-[12.5px] text-mist-300 sm:text-[13px]">{a.act}</span>
+            <span className={`ml-auto font-mono text-[10px] uppercase tracking-[0.14em] sm:text-[11px] ${a.c}`}>
               {a.v}
             </span>
           </li>
@@ -274,20 +298,20 @@ export default function OS() {
   return (
     <section
       id="os"
-      className="relative scroll-mt-24 border-t border-soot-950/12 bg-ivory-200/70 py-24 sm:py-32"
+      className="relative scroll-mt-20 border-t border-soot-950/12 bg-ivory-200/70 py-16 sm:py-24 lg:py-32"
     >
-      <div className="mx-auto max-w-[1360px] px-5 sm:px-8">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+      <div className="mx-auto max-w-[1360px] px-4 sm:px-8">
+        <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-8">
           <div className="lg:col-span-7">
-            <div data-reveal className="mb-5 flex items-center gap-4">
+            <div data-reveal className="mb-4 flex items-center gap-3 sm:mb-5 sm:gap-4">
               <span className="label text-cobalt-500">03</span>
-              <span className="h-px w-10 bg-soot-950/25" />
+              <span className="h-px w-8 bg-soot-950/25 sm:w-10" />
               <span className="label text-soot-400">omneel os</span>
             </div>
             <h2
               data-reveal
               style={{ "--rd": "80ms" } as React.CSSProperties}
-              className="font-display text-[clamp(2.1rem,4.6vw,3.9rem)] text-soot-950"
+              className="font-display text-[clamp(1.85rem,4.4vw,3.9rem)] text-soot-950"
             >
               The operating system
               <br />
@@ -297,7 +321,7 @@ export default function OS() {
           <p
             data-reveal
             style={{ "--rd": "160ms" } as React.CSSProperties}
-            className="text-[15px] leading-[1.8] text-soot-600 lg:col-span-5 lg:pb-2"
+            className="text-[14.5px] leading-[1.75] text-soot-600 sm:text-[15px] sm:leading-[1.8] lg:col-span-5 lg:pb-2"
           >
             A meta-operating system: it understands tasks, governs resources, speaks to your
             applications through a typed bridge, and keeps every autonomous action inside a
@@ -308,9 +332,9 @@ export default function OS() {
         {/* ---------------------------------------------------- the os frame */}
         <div
           data-reveal="scale"
-          className="panel-ink corner-ticks corner-ticks-ink mt-14 overflow-hidden"
+          className="panel-ink corner-ticks corner-ticks-ink mt-10 overflow-hidden sm:mt-14"
         >
-          <div className="flex items-center gap-4 border-b border-white/[0.09] bg-white/[0.03] px-4 py-2.5 sm:px-5">
+          <div className="flex items-center gap-3 border-b border-white/[0.09] bg-white/[0.03] px-3.5 py-2.5 sm:gap-4 sm:px-5">
             <span className="flex gap-1.5">
               <i className="h-2 w-2 rounded-full bg-vermilion-400" />
               <i className="h-2 w-2 rounded-full bg-brass-400" />
@@ -324,24 +348,24 @@ export default function OS() {
 
           <div className="grid lg:grid-cols-[190px_1fr_240px]">
             {/* rail */}
-            <div className="flex gap-px overflow-x-auto border-b border-white/[0.07] bg-white/[0.012] lg:flex-col lg:overflow-visible lg:border-b-0 lg:border-r">
+            <div className="scroll-touch flex gap-px overflow-x-auto border-b border-white/[0.07] bg-white/[0.012] lg:flex-col lg:overflow-visible lg:border-b-0 lg:border-r">
               {VIEWS.map((v) => {
                 const on = v.id === view;
                 return (
                   <button
                     key={v.id}
                     onClick={() => setView(v.id)}
-                    className={`group relative flex shrink-0 items-center gap-3 px-4 py-3.5 text-left transition-colors duration-300 lg:shrink lg:w-full ${
+                    className={`group relative flex shrink-0 items-center gap-2.5 px-3.5 py-3 text-left transition-colors duration-300 sm:px-4 sm:py-3.5 lg:w-full lg:shrink ${
                       on ? "bg-cobalt-400/[0.14] text-mist-50" : "text-mist-500 hover:bg-white/[0.04] hover:text-mist-100"
                     }`}
                   >
                     <span className={on ? "text-cobalt-300" : "text-mist-700 group-hover:text-mist-300"}>
                       <v.icon size={16} />
                     </span>
-                    <span className="whitespace-nowrap text-[13px]">{v.label}</span>
+                    <span className="whitespace-nowrap text-[12.5px] sm:text-[13px]">{v.label}</span>
                     <span
-                      className={`absolute inset-y-0 left-0 w-[2px] bg-brass-400 transition-transform duration-400 ${
-                        on ? "scale-y-100" : "scale-y-0"
+                      className={`absolute inset-x-0 bottom-0 h-[2px] bg-brass-400 transition-transform duration-400 lg:inset-y-0 lg:bottom-auto lg:left-0 lg:h-auto lg:w-[2px] ${
+                        on ? "scale-100" : "scale-0"
                       }`}
                     />
                   </button>
@@ -350,7 +374,7 @@ export default function OS() {
             </div>
 
             {/* main */}
-            <div className="min-h-[420px] px-4 py-5 sm:px-6 sm:py-6">
+            <div className="min-h-[380px] px-3.5 py-4 sm:min-h-[420px] sm:px-6 sm:py-6">
               <div key={view} className="anim-view">
                 {view === "session" && <SessionView />}
                 {view === "bridge" && <BridgeView />}
@@ -361,9 +385,9 @@ export default function OS() {
             </div>
 
             {/* side telemetry */}
-            <div className="border-t border-white/[0.07] bg-white/[0.012] px-4 py-5 lg:border-l lg:border-t-0">
-              <p className="label-sm mb-4 text-mist-700">active agents</p>
-              <ul className="space-y-3">
+            <div className="border-t border-white/[0.07] bg-white/[0.012] px-3.5 py-4 sm:px-5 sm:py-5 lg:border-l lg:border-t-0">
+              <p className="label-sm mb-3.5 text-mist-700">active agents</p>
+              <ul className="space-y-2.5 sm:space-y-3">
                 {AGENTS.map((a) => (
                   <li key={a.n} className="group flex items-center gap-2.5">
                     <span className="relative flex h-1.5 w-1.5 shrink-0">
@@ -384,17 +408,17 @@ export default function OS() {
                 ))}
               </ul>
 
-              <div className="mt-6 border-t border-white/[0.07] pt-5">
-                <p className="label-sm mb-3 text-mist-700">kernel</p>
+              <div className="mt-5 border-t border-white/[0.07] pt-4 sm:mt-6 sm:pt-5">
+                <p className="label-sm mb-2.5 text-mist-700">kernel</p>
                 {[
                   ["uptime", "41d 06h"],
                   ["scheduler", "fair-queue"],
                   ["isolation", "microVM"],
                   ["replay", "enabled"],
                 ].map(([k, v]) => (
-                  <div key={k} className="flex items-baseline justify-between py-1.5">
-                    <span className="font-mono text-[11px] text-mist-700">{k}</span>
-                    <span className="font-mono text-[11px] text-mist-300">{v}</span>
+                  <div key={k} className="flex items-baseline justify-between py-1 sm:py-1.5">
+                    <span className="font-mono text-[10.5px] text-mist-700 sm:text-[11px]">{k}</span>
+                    <span className="font-mono text-[10.5px] text-mist-300 sm:text-[11px]">{v}</span>
                   </div>
                 ))}
               </div>
@@ -403,24 +427,24 @@ export default function OS() {
         </div>
 
         {/* ------------------------------------------------------- bento row */}
-        <div className="mt-6 grid gap-6 lg:grid-cols-12">
+        <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-12">
           <div
             data-reveal
-            className="panel panel-hover group relative overflow-hidden p-7 lg:col-span-5"
+            className="panel panel-hover group relative overflow-hidden p-5 sm:p-7 md:col-span-2 lg:col-span-5"
           >
             <span className="label-sm text-pine-600">semantic filesystem</span>
-            <h3 className="display-soft mt-3 text-[24px] text-soot-950">
+            <h3 className="display-soft mt-3 text-[21px] text-soot-950 sm:text-[24px]">
               Files addressed by meaning
             </h3>
-            <p className="mt-3 text-[13.5px] leading-relaxed text-soot-500">
+            <p className="mt-2.5 text-[13px] leading-relaxed text-soot-500 sm:mt-3 sm:text-[13.5px]">
               Paths stop being the only index. Ask for “contracts renewing this quarter” and Omneel
               OS resolves the set, its permissions and its provenance.
             </p>
-            <div className="mt-5 space-y-1.5 bg-soot-950 p-4 font-mono text-[11.5px]">
-              <p className="text-mist-700">$ find --meaning "contracts renewing q4"</p>
+            <div className="scroll-touch mt-4 space-y-1.5 overflow-x-auto bg-soot-950 p-3.5 font-mono text-[10.5px] sm:mt-5 sm:p-4 sm:text-[11.5px]">
+              <p className="whitespace-nowrap text-mist-700">$ find --meaning "contracts renewing q4"</p>
               {["atlas/msa-northwind.pdf", "atlas/msa-lumen.docx", "vendor/renewal-schedule.csv"].map(
                 (f, i) => (
-                  <p key={f} className="flex items-center gap-2 text-mist-300">
+                  <p key={f} className="flex items-center gap-2 whitespace-nowrap text-mist-300">
                     <span className="text-aqua-400">↳</span>
                     {f}
                     <span className="ml-auto text-mist-700">{["7d", "12d", "31d"][i]}</span>
@@ -430,30 +454,30 @@ export default function OS() {
             </div>
           </div>
 
-          <div data-reveal style={{ "--rd": "90ms" } as React.CSSProperties} className="lg:col-span-3">
-            <div className="panel-ink flex h-full flex-col p-7 transition-transform duration-500 hover:-translate-y-1">
+          <div data-reveal style={{ "--rd": "90ms" } as React.CSSProperties} className="md:col-span-1 lg:col-span-3">
+            <div className="panel-ink flex h-full flex-col p-5 transition-transform duration-500 hover:-translate-y-1 sm:p-7">
               <span className="label-sm text-brass-400">microvm sandbox</span>
-              <h3 className="display-soft mt-3 text-[24px] text-mist-50">Nothing runs loose</h3>
-              <p className="mt-3 text-[13.5px] leading-relaxed text-mist-500">
+              <h3 className="display-soft mt-3 text-[21px] text-mist-50 sm:text-[24px]">Nothing runs loose</h3>
+              <p className="mt-2.5 text-[13px] leading-relaxed text-mist-500 sm:mt-3 sm:text-[13.5px]">
                 Agents execute in disposable micro-VMs with allow-listed egress. A misbehaving
                 agent loses its sandbox, not your data.
               </p>
-              <div className="mt-auto pt-6">
-                <span className="font-display text-[46px] leading-none text-mist-50">120</span>
-                <span className="label-sm mt-2 block text-mist-700">ms cold-start</span>
+              <div className="mt-auto pt-5 sm:pt-6">
+                <span className="font-display text-[38px] leading-none text-mist-50 sm:text-[46px]">120</span>
+                <span className="label-sm mt-1.5 block text-mist-700 sm:mt-2">ms cold-start</span>
               </div>
             </div>
           </div>
 
-          <div data-reveal style={{ "--rd": "170ms" } as React.CSSProperties} className="lg:col-span-4">
-            <div className="panel panel-hover flex h-full flex-col p-7">
+          <div data-reveal style={{ "--rd": "170ms" } as React.CSSProperties} className="md:col-span-1 lg:col-span-4">
+            <div className="panel panel-hover flex h-full flex-col p-5 sm:p-7">
               <span className="label-sm text-cobalt-500">deterministic replay</span>
-              <h3 className="display-soft mt-3 text-[24px] text-soot-950">Rewind any run</h3>
-              <p className="mt-3 text-[13.5px] leading-relaxed text-soot-500">
+              <h3 className="display-soft mt-3 text-[21px] text-soot-950 sm:text-[24px]">Rewind any run</h3>
+              <p className="mt-2.5 text-[13px] leading-relaxed text-soot-500 sm:mt-3 sm:text-[13.5px]">
                 Every decision, tool call and delegation is recorded. Step backwards through an
                 autonomous run the way you would a debugger.
               </p>
-              <div className="relative mt-auto flex items-center gap-2 pt-7">
+              <div className="relative mt-auto flex items-center gap-2 pt-5 sm:pt-7">
                 <span className="h-px flex-1 bg-soot-950/15" />
                 {[0, 1, 2, 3, 4].map((i) => (
                   <span

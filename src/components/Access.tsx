@@ -36,8 +36,8 @@ export default function Access() {
     .padStart(4, "0")}`;
 
   return (
-    <section id="access" className="relative scroll-mt-24 border-t border-soot-950/12 py-24 sm:py-32">
-      <div className="mx-auto max-w-[1360px] px-5 sm:px-8">
+    <section id="access" className="relative scroll-mt-20 border-t border-soot-950/12 py-16 sm:py-24 lg:py-32">
+      <div className="mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8">
         <div className="panel-ink corner-ticks corner-ticks-ink relative overflow-hidden">
           <div aria-hidden className="grid-fine absolute inset-0 opacity-70" />
           <div
@@ -55,18 +55,18 @@ export default function Access() {
             style={{ background: "#B8791A", opacity: 0.14, animationDelay: "3s" }}
           />
 
-          <div className="relative grid gap-12 p-7 sm:p-12 lg:grid-cols-12 lg:gap-14 lg:p-16">
+          <div className="relative grid gap-10 p-5 sm:p-10 lg:grid-cols-12 lg:gap-14 lg:p-16">
             {/* ------------------------------------------------------- left */}
             <div className="lg:col-span-6">
-              <div data-reveal className="mb-5 flex items-center gap-4">
+              <div data-reveal className="mb-4 sm:mb-5 flex items-center gap-3 sm:gap-4">
                 <span className="label text-brass-400">09</span>
-                <span className="h-px w-10 bg-white/20" />
+                <span className="h-px w-8 sm:w-10 bg-white/20" />
                 <span className="label text-mist-500">early access</span>
               </div>
               <h2
                 data-reveal
                 style={{ "--rd": "70ms" } as React.CSSProperties}
-                className="display-soft text-[clamp(2.2rem,5vw,4.2rem)] leading-[1.02] text-mist-50"
+                className="display-soft text-[clamp(2rem,5.5vw,4.2rem)] leading-[1.04] text-mist-50"
               >
                 Bring us one goal
                 <br />
@@ -75,40 +75,40 @@ export default function Access() {
               <p
                 data-reveal
                 style={{ "--rd": "140ms" } as React.CSSProperties}
-                className="mt-6 max-w-lg text-[15px] leading-[1.8] text-mist-300"
+                className="mt-5 sm:mt-6 max-w-lg text-[14px] sm:text-[15px] leading-[1.75] sm:leading-[1.8] text-mist-300"
               >
                 Cohort 04 opens to twenty teams. We onboard one intent from your organisation end
                 to end — language source, agent hierarchy, permissions and all — and you watch it
                 run inside Omneel OS.
               </p>
 
-              <ul className="mt-9 border-t border-white/[0.1]">
+              <ul className="mt-8 sm:mt-9 border-t border-white/[0.1]">
                 {PERKS.map((p, i) => (
                   <li
                     key={p}
                     data-reveal="left"
                     style={{ "--rd": `${200 + i * 70}ms` } as React.CSSProperties}
-                    className="group flex items-start gap-3.5 border-b border-white/[0.1] py-4 transition-colors duration-400 hover:bg-white/[0.03]"
+                    className="group flex items-start gap-3 sm:gap-3.5 border-b border-white/[0.1] py-3.5 sm:py-4 transition-colors duration-400 hover:bg-white/[0.03]"
                   >
-                    <span className="mt-[3px] text-pine-300 transition-transform duration-300 group-hover:scale-125">
+                    <span className="mt-[3px] shrink-0 text-pine-300 transition-transform duration-300 group-hover:scale-125">
                       <IconCheck size={14} />
                     </span>
-                    <span className="text-[14px] leading-relaxed text-mist-300 transition-colors duration-300 group-hover:text-mist-50">
+                    <span className="text-[13.5px] sm:text-[14px] leading-relaxed text-mist-300 transition-colors duration-300 group-hover:text-mist-50">
                       {p}
                     </span>
-                    <span className="label-sm ml-auto pt-1 text-mist-700">0{i + 1}</span>
+                    <span className="label-sm ml-auto shrink-0 pt-1 text-mist-700">0{i + 1}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
+              <div className="mt-7 sm:mt-8 flex flex-wrap items-center gap-x-6 sm:gap-x-8 gap-y-3">
                 {[
                   ["14", "seats left", "text-mist-50"],
                   ["20", "teams in cohort 04", "text-mist-50"],
                   ["Q2", "onboarding begins", "text-brass-400"],
                 ].map(([n, l, c]) => (
-                  <div key={l}>
-                    <span className={`font-display text-[26px] ${c}`}>{n}</span>
+                  <div key={l} className="flex items-baseline">
+                    <span className={`font-display text-[22px] sm:text-[26px] ${c}`}>{n}</span>
                     <span className="label-sm ml-2 text-mist-500">{l}</span>
                   </div>
                 ))}
@@ -119,27 +119,27 @@ export default function Access() {
             <div className="lg:col-span-6">
               <div
                 data-reveal="right"
-                className="relative border border-white/[0.12] bg-soot-950/70 p-6 backdrop-blur-sm sm:p-8"
+                className="relative border border-white/[0.12] bg-soot-950/70 p-5 backdrop-blur-sm sm:p-8"
               >
                 {sent ? (
-                  <div className="anim-view flex min-h-[420px] flex-col justify-center">
+                  <div className="anim-view flex min-h-[380px] sm:min-h-[420px] flex-col justify-center">
                     <span className="flex h-12 w-12 items-center justify-center border border-pine-300/50 bg-pine-300/12 text-pine-300">
                       <IconCheck size={22} />
                     </span>
-                    <h3 className="font-display mt-6 text-[30px] text-mist-50">Intent received.</h3>
-                    <p className="mt-3 max-w-sm text-[14px] leading-relaxed text-mist-300">
+                    <h3 className="font-display mt-6 text-[26px] sm:text-[30px] text-mist-50">Intent received.</h3>
+                    <p className="mt-3 max-w-sm text-[13.5px] sm:text-[14px] leading-relaxed text-mist-300">
                       Thanks {name.split(" ")[0]} — your seat in cohort 04 is held for 72 hours.
                       We'll reply to <span className="text-pine-300">{email}</span> with the
                       onboarding brief.
                     </p>
-                    <div className="mt-7 space-y-2 border-t border-white/[0.1] pt-5 font-mono text-[11.5px]">
+                    <div className="mt-7 space-y-2 border-t border-white/[0.1] pt-5 font-mono text-[11px] sm:text-[11.5px]">
                       {[
                         ["request", ref],
                         ["role", role.toLowerCase()],
                         ["status", "queued for review"],
                         ["first intent", goal.trim() ? "attached" : "to be scoped"],
                       ].map(([k, v]) => (
-                        <div key={k} className="flex items-baseline gap-3">
+                        <div key={k} className="flex items-baseline gap-2 sm:gap-3">
                           <span className="text-mist-700">{k}</span>
                           <span className="h-px flex-1 bg-white/[0.09]" />
                           <span className="text-mist-300">{v}</span>
@@ -161,11 +161,11 @@ export default function Access() {
                 ) : (
                   <form onSubmit={submit} noValidate>
                     <span className="label-sm text-mist-700">design partner · cohort 04</span>
-                    <h3 className="display-soft mt-3 text-[26px] text-mist-50">
+                    <h3 className="display-soft mt-2 sm:mt-3 text-[22px] sm:text-[26px] text-mist-50">
                       Request early access
                     </h3>
 
-                    <div className="mt-7 space-y-5">
+                    <div className="mt-6 sm:mt-7 space-y-4 sm:space-y-5">
                       <Field
                         id="name"
                         label="name"
@@ -192,13 +192,13 @@ export default function Access() {
 
                       <div>
                         <span className="label-sm mb-2 block text-mist-500">role</span>
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-wrap gap-1.5 sm:gap-2">
                           {ROLES.map((r) => (
                             <button
                               type="button"
                               key={r}
                               onClick={() => setRole(r)}
-                              className={`border px-3 py-1.5 text-[12.5px] transition-all duration-300 ${
+                              className={`border px-2.5 sm:px-3 py-1.5 text-[12px] sm:text-[12.5px] transition-all duration-300 min-h-[36px] ${
                                 role === r
                                   ? "border-cobalt-300/70 bg-cobalt-400/20 text-cobalt-300"
                                   : "border-white/[0.14] text-mist-500 hover:border-white/35 hover:text-mist-100"
@@ -220,14 +220,14 @@ export default function Access() {
                           value={goal}
                           onChange={(e) => setGoal(e.target.value)}
                           placeholder="“Reconcile month-end across three ledgers and draft the variance memo.”"
-                          className="w-full resize-none border border-white/[0.14] bg-white/[0.03] px-3.5 py-3 text-[13.5px] text-mist-100 outline-none transition-colors duration-300 placeholder:text-mist-700 focus:border-cobalt-300/70 focus:bg-cobalt-400/[0.07]"
+                          className="w-full resize-none border border-white/[0.14] bg-white/[0.03] px-3.5 py-3 text-[16px] sm:text-[13.5px] text-mist-100 outline-none transition-colors duration-300 placeholder:text-mist-700 focus:border-cobalt-300/70 focus:bg-cobalt-400/[0.07]"
                         />
                       </div>
                     </div>
 
                     <button
                       type="submit"
-                      className="btn-cobalt group mt-7 flex w-full items-center justify-center gap-2.5 px-6 py-4 text-[14px] font-medium"
+                      className="btn-cobalt group mt-6 sm:mt-7 flex w-full items-center justify-center gap-2.5 px-6 py-3.5 sm:py-4 text-[14px] font-medium"
                     >
                       Submit intent
                       <IconArrow
@@ -235,7 +235,7 @@ export default function Access() {
                         className="transition-transform duration-300 group-hover:translate-x-1.5"
                       />
                     </button>
-                    <p className="label-sm mt-4 text-center leading-relaxed text-mist-700">
+                    <p className="label-sm mt-3.5 sm:mt-4 text-center leading-relaxed text-mist-700">
                       no newsletter. no spam. one reply from a human.
                     </p>
                   </form>
@@ -268,7 +268,7 @@ function Field({
 }) {
   return (
     <div>
-      <label htmlFor={id} className="label-sm mb-2 block text-mist-500">
+      <label htmlFor={id} className="label-sm mb-1.5 sm:mb-2 block text-mist-500">
         {label}
       </label>
       <input
@@ -277,7 +277,7 @@ function Field({
         value={value}
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
-        className={`w-full border bg-white/[0.03] px-3.5 py-3 text-[14px] text-mist-100 outline-none transition-colors duration-300 placeholder:text-mist-700 ${
+        className={`w-full border bg-white/[0.03] px-3.5 py-2.5 sm:py-3 text-[16px] sm:text-[14px] text-mist-100 outline-none transition-colors duration-300 placeholder:text-mist-700 ${
           error
             ? "border-vermilion-400/80 bg-vermilion-400/[0.07]"
             : "border-white/[0.14] focus:border-cobalt-300/70 focus:bg-cobalt-400/[0.07]"
