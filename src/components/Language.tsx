@@ -72,7 +72,7 @@ export default function Language() {
       <div className="mx-auto max-w-[1360px] px-4 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           {/* ------------------------------------------------------ left rail */}
-          <div className="lg:col-span-4">
+          <div className="min-w-0 lg:col-span-4">
             <div data-reveal className="mb-4 flex items-center gap-3 sm:mb-5 sm:gap-4">
               <span className="label text-cobalt-500">02</span>
               <span className="h-px w-8 bg-soot-950/25 sm:w-10" />
@@ -113,14 +113,14 @@ export default function Language() {
                   <span className="mt-1 shrink-0 text-soot-400 transition-colors duration-400 group-hover:text-cobalt-500">
                     <p.icon size={18} />
                   </span>
-                  <div className="flex-1">
+                  <div className="min-w-0 flex-1">
                     <div className="flex items-baseline gap-2.5 sm:gap-3">
                       <span className="label-sm text-soot-400">{p.n}</span>
                       <h3 className="display-soft text-[16px] text-soot-950 transition-colors duration-300 group-hover:text-cobalt-600 sm:text-[17px]">
                         {p.t}
                       </h3>
                     </div>
-                    <p className="mt-1.5 text-[13px] leading-relaxed text-soot-500 transition-colors duration-300 group-hover:text-soot-700 sm:mt-2 sm:text-[13.5px]">
+                    <p className="mt-1.5 text-[13px] leading-relaxed text-soot-500 transition-colors duration-300 group-hover:text-soot-700 sm:mt-2 sm:text-[13.5px] break-words">
                       {p.d}
                     </p>
                   </div>
@@ -130,10 +130,10 @@ export default function Language() {
           </div>
 
           {/* --------------------------------------------------------- editor */}
-          <div className="lg:col-span-8">
-            <div data-reveal="right" className="panel-ink corner-ticks corner-ticks-ink overflow-hidden">
+          <div className="min-w-0 lg:col-span-8">
+            <div data-reveal="right" className="panel-ink corner-ticks corner-ticks-ink min-w-0 overflow-hidden">
               <div className="flex items-stretch border-b border-white/[0.09] bg-white/[0.03]">
-                <div className="scroll-touch flex flex-1 items-stretch gap-px overflow-x-auto">
+                <div className="scroll-touch flex min-w-0 flex-1 items-stretch gap-px overflow-x-auto">
                   {CODE_SAMPLES.map((s, i) => (
                     <button
                       key={s.id}
@@ -169,7 +169,7 @@ export default function Language() {
                 </div>
               </div>
 
-              <div className="grid-fine scroll-touch relative flex max-h-[460px] overflow-auto sm:max-h-[520px]">
+              <div className="grid-fine scroll-touch relative flex max-h-[460px] min-w-0 overflow-auto sm:max-h-[520px]">
                 <div
                   aria-hidden
                   className="sticky left-0 z-10 shrink-0 select-none border-r border-white/[0.07] bg-soot-950/95 px-2.5 py-4 text-right font-mono text-[11px] leading-[1.72] text-mist-700 sm:px-3 sm:py-5 sm:text-[12.5px]"
@@ -178,7 +178,7 @@ export default function Language() {
                     <div key={i}>{String(i + 1).padStart(2, "0")}</div>
                   ))}
                 </div>
-                <pre className="scroll-touch flex-1 overflow-x-auto px-3.5 py-4 font-mono text-[11px] leading-[1.72] sm:px-5 sm:py-5 sm:text-[12.5px]">
+                <pre className="scroll-touch min-w-0 flex-1 overflow-x-auto px-3.5 py-4 font-mono text-[11px] leading-[1.72] sm:px-5 sm:py-5 sm:text-[12.5px]">
                   <code dangerouslySetInnerHTML={{ __html: highlight(sample.code) }} />
                 </pre>
               </div>

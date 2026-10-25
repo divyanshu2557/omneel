@@ -17,10 +17,10 @@ export default function App() {
   useRevealObserver();
 
   return (
-    <div className="relative min-h-screen bg-ivory-100">
+    <div className="relative min-h-screen w-full max-w-full overflow-x-hidden bg-ivory-100">
       <Ambient />
       <Nav />
-      <main className="relative z-10">
+      <main className="relative z-10 w-full max-w-full overflow-x-hidden">
         <Hero />
         <Architecture />
         <Language />
