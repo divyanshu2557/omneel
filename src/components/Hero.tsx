@@ -36,7 +36,7 @@ function Console() {
       </div>
 
       <div className="panel-ink corner-ticks corner-ticks-ink relative overflow-hidden">
-        <div className="flex items-center gap-3 border-b border-white/[0.08] bg-white/[0.03] px-4 py-2.5">
+        <div className="flex items-center gap-3 border-b border-white/[0.08] bg-white/[0.03] px-3.5 py-2.5 sm:px-4">
           <span className="flex gap-1.5">
             <i className="h-2 w-2 rounded-full bg-vermilion-400" />
             <i className="h-2 w-2 rounded-full bg-brass-400" />
@@ -46,16 +46,16 @@ function Console() {
           <span className="label-sm ml-auto text-mist-700">session 0x4f2a</span>
         </div>
 
-        <div className="grid-fine relative px-4 py-4 font-mono text-[11.5px] leading-[1.85] sm:text-[12.5px]">
+        <div className="grid-fine scroll-touch relative max-h-[360px] overflow-x-auto px-3.5 py-3.5 font-mono text-[10.5px] leading-[1.8] sm:max-h-none sm:px-4 sm:py-4 sm:text-[12px] sm:leading-[1.85]">
           {LINES.map((l, i) => (
             <div
               key={i}
-              className={`flex gap-3 whitespace-pre transition-all duration-500 ${
+              className={`flex items-baseline gap-2.5 transition-all duration-500 sm:gap-3 ${
                 i < shown ? "translate-x-0 opacity-100" : "translate-x-2 opacity-0"
               }`}
             >
               <span className={`w-3 shrink-0 ${l.c} opacity-75`}>{l.g}</span>
-              <span className={l.c}>{l.t}</span>
+              <span className={`${l.c} whitespace-nowrap`}>{l.t}</span>
               {i === shown - 1 && shown < LINES.length && (
                 <span className="anim-caret -ml-1 inline-block h-[13px] w-[7px] translate-y-[2px] bg-brass-400" />
               )}
@@ -63,7 +63,7 @@ function Console() {
           ))}
         </div>
 
-        <div className="border-t border-white/[0.08] px-4 py-3">
+        <div className="border-t border-white/[0.08] px-3.5 py-3 sm:px-4">
           <div className="relative h-[3px] w-full overflow-hidden bg-white/[0.09]">
             <div
               className="absolute inset-y-0 left-0 bg-gradient-to-r from-pine-400 to-aqua-300 transition-[width] duration-700 ease-out"
@@ -71,22 +71,22 @@ function Console() {
             />
             <div className="anim-shimmer absolute inset-y-0 w-16 bg-gradient-to-r from-transparent via-white/40 to-transparent" />
           </div>
-          <div className="mt-2.5 flex items-center justify-between">
-            <span className="label-sm text-mist-700">
+          <div className="mt-2.5 flex items-center justify-between gap-2">
+            <span className="label-sm truncate text-mist-700">
               {shown}/{LINES.length} steps · orchestrator engaged
             </span>
-            <span className="label-sm text-brass-400">
+            <span className="label-sm shrink-0 text-brass-400">
               {shown === LINES.length ? "complete" : "running"}
             </span>
           </div>
         </div>
       </div>
 
-      <div className="anim-float panel mt-4 flex items-center gap-3 px-4 py-3">
-        <span className="text-brass-500">
+      <div className="anim-float panel mt-4 flex items-center gap-3 px-3.5 py-3 sm:px-4">
+        <span className="shrink-0 text-brass-500">
           <IconIntent size={16} />
         </span>
-        <p className="text-[12.5px] leading-snug text-soot-600">
+        <p className="text-[12px] leading-snug text-soot-600 sm:text-[12.5px]">
           Intent resolved from a single sentence — no tickets, no scripts, no glue.
         </p>
       </div>
@@ -98,7 +98,7 @@ export default function Hero() {
   const { ref, pos } = usePointer<HTMLDivElement>();
 
   return (
-    <section id="top" ref={ref} className="relative pt-[68px]">
+    <section id="top" ref={ref} className="relative pt-[64px] sm:pt-[68px]">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 transition-opacity duration-700"
@@ -112,35 +112,35 @@ export default function Hero() {
 
       {/* black instrument strip */}
       <div className="relative bg-soot-950">
-        <div className="mx-auto flex max-w-[1360px] items-center gap-4 px-5 py-2.5 sm:px-8">
+        <div className="mx-auto flex max-w-[1360px] items-center justify-between gap-3 px-4 py-2 sm:px-8 sm:py-2.5">
           <span className="label-sm text-mist-100">omneel tech</span>
           <span className="hidden h-3 w-px bg-white/20 sm:block" />
           <span className="label-sm hidden text-mist-500 sm:block">ecosystem build 4.2.0</span>
-          <span className="ml-auto flex items-center gap-2">
+          <span className="flex items-center gap-2">
             <span className="relative flex h-1.5 w-1.5">
               <span className="anim-ring absolute inline-flex h-full w-full rounded-full bg-pine-300" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-pine-300" />
             </span>
-            <span className="label-sm text-mist-300">agent mesh nominal</span>
+            <span className="label-sm text-mist-300">mesh nominal</span>
           </span>
           <span className="hidden h-3 w-px bg-white/20 md:block" />
           <span className="label-sm hidden text-mist-500 md:block">design partner cohort 03</span>
         </div>
       </div>
 
-      <div className="relative mx-auto grid max-w-[1360px] items-center gap-14 px-5 pb-16 pt-14 sm:px-8 lg:grid-cols-12 lg:gap-10 lg:pb-24 lg:pt-20">
+      <div className="relative mx-auto grid max-w-[1360px] items-center gap-10 px-4 pb-14 pt-10 sm:px-8 sm:pb-20 sm:pt-16 lg:grid-cols-12 lg:gap-10 lg:pb-24 lg:pt-20">
         <div className="lg:col-span-7">
           <div
             data-reveal
-            className="mb-7 inline-flex items-center gap-3 border border-soot-950/15 bg-ivory-50 py-1.5 pl-2 pr-4 shadow-[0_1px_0_rgba(255,255,255,.8)_inset]"
+            className="mb-6 inline-flex items-center gap-2.5 border border-soot-950/15 bg-ivory-50 py-1 pl-2 pr-3.5 shadow-[0_1px_0_rgba(255,255,255,.8)_inset] sm:mb-7 sm:gap-3 sm:py-1.5 sm:pl-2 sm:pr-4"
           >
-            <span className="bg-cobalt-500 px-2 py-1 text-[9.5px] font-semibold uppercase tracking-[0.18em] text-ivory-50">
+            <span className="bg-cobalt-500 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] text-ivory-50 sm:py-1 sm:text-[9.5px]">
               new
             </span>
             <span className="label-sm text-soot-600">the ai-native computing ecosystem</span>
           </div>
 
-          <h1 className="font-display text-[clamp(2.9rem,7.6vw,6.6rem)] leading-[0.9]">
+          <h1 className="font-display text-[clamp(2.1rem,6.8vw,6.4rem)] leading-[0.92] tracking-[-0.035em]">
             <span data-reveal style={{ "--rd": "60ms" } as React.CSSProperties} className="block text-soot-950">
               State the intent.
             </span>
@@ -156,10 +156,10 @@ export default function Hero() {
           <div
             data-reveal
             style={{ "--rd": "260ms" } as React.CSSProperties}
-            className="mt-8 flex max-w-xl gap-4"
+            className="mt-6 flex max-w-xl gap-3 sm:mt-8 sm:gap-4"
           >
-            <span className="mt-2 h-[2px] w-10 shrink-0 bg-brass-500" />
-            <p className="text-[15.5px] leading-[1.75] text-soot-600 sm:text-base">
+            <span className="mt-2 h-[2px] w-8 shrink-0 bg-brass-500 sm:w-10" />
+            <p className="text-[14.5px] leading-[1.7] text-soot-600 sm:text-base sm:leading-[1.75]">
               Omneel Tech is building the platform where a programming language, an operating
               system, a mesh of autonomous agents and your existing applications converge around
               one thing — <span className="font-medium text-soot-950">what you actually want done.</span>
@@ -169,11 +169,11 @@ export default function Hero() {
           <div
             data-reveal
             style={{ "--rd": "340ms" } as React.CSSProperties}
-            className="mt-10 flex flex-wrap items-center gap-3"
+            className="mt-8 flex flex-col items-stretch gap-3 sm:mt-10 sm:flex-row sm:items-center sm:gap-3"
           >
             <a
               href="#access"
-              className="btn-primary group inline-flex items-center gap-2.5 px-6 py-3.5 text-[14px] font-medium"
+              className="btn-primary group inline-flex items-center justify-center gap-2.5 px-5 py-3.5 text-[14px] font-medium sm:px-6"
             >
               Request early access
               <IconArrowUpRight
@@ -183,7 +183,7 @@ export default function Hero() {
             </a>
             <a
               href="#architecture"
-              className="btn-ghost group inline-flex items-center gap-2.5 px-6 py-3.5 text-[14px]"
+              className="btn-ghost group inline-flex items-center justify-center gap-2.5 px-5 py-3.5 text-[14px] sm:px-6"
             >
               Explore the architecture
               <IconArrow
@@ -196,17 +196,17 @@ export default function Hero() {
           <dl
             data-reveal
             style={{ "--rd": "420ms" } as React.CSSProperties}
-            className="mt-14 grid grid-cols-2 gap-px overflow-hidden bg-white/12 sm:grid-cols-4"
+            className="mt-10 grid grid-cols-2 gap-px overflow-hidden bg-white/12 sm:mt-14 sm:grid-cols-4"
           >
             {STATS.map((s) => (
               <div
                 key={s.l}
-                className="group bg-soot-950 px-4 py-4 transition-colors duration-500 hover:bg-soot-800"
+                className="group bg-soot-950 px-3.5 py-3.5 transition-colors duration-500 hover:bg-soot-800 sm:px-4 sm:py-4"
               >
-                <dt className="font-display text-[26px] text-ivory-50 transition-colors duration-300 group-hover:text-brass-400">
+                <dt className="font-display text-[22px] text-ivory-50 transition-colors duration-300 group-hover:text-brass-400 sm:text-[26px]">
                   {s.n}
                 </dt>
-                <dd className="label-sm mt-1.5 text-mist-500 transition-colors duration-300 group-hover:text-mist-300">
+                <dd className="label-sm mt-1 text-mist-500 transition-colors duration-300 group-hover:text-mist-300">
                   {s.l}
                 </dd>
               </div>
@@ -232,11 +232,11 @@ export function Ticker() {
   const row = [...TICKER, ...TICKER];
   return (
     <div className="marquee-host relative overflow-hidden bg-soot-950 py-3.5">
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-soot-950 to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-soot-950 to-transparent" />
-      <div className="anim-marquee flex w-max items-center gap-10">
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-soot-950 to-transparent sm:w-24" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-soot-950 to-transparent sm:w-24" />
+      <div className="anim-marquee flex w-max items-center gap-8 sm:gap-10">
         {row.map((t, i) => (
-          <span key={i} className="flex items-center gap-10">
+          <span key={i} className="flex items-center gap-8 sm:gap-10">
             <span className="label-sm whitespace-nowrap text-mist-300">{t}</span>
             <span className="h-1.5 w-1.5 rotate-45 bg-brass-400" />
           </span>

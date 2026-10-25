@@ -43,16 +43,16 @@ export default function Nav() {
             : "border-b border-transparent bg-transparent"
         }`}
       >
-        <nav className="mx-auto flex h-[68px] max-w-[1360px] items-center gap-6 px-5 sm:px-8">
-          <a href="#top" className="group flex items-center gap-3 text-soot-900">
+        <nav className="mx-auto flex h-[64px] max-w-[1360px] items-center justify-between gap-3 px-4 sm:h-[68px] sm:gap-6 sm:px-8">
+          <a href="#top" className="group flex shrink-0 items-center gap-2.5 text-soot-900 sm:gap-3">
             <span className="transition-transform duration-700 group-hover:rotate-[135deg]">
-              <Mark size={30} />
+              <Mark size={28} />
             </span>
             <span className="flex flex-col leading-none">
-              <span className="font-display text-[19px] tracking-[-0.02em] text-soot-950">
+              <span className="font-display text-[18px] tracking-[-0.02em] text-soot-950 sm:text-[19px]">
                 OMNEEL
               </span>
-              <span className="label-sm mt-[3px] text-soot-400 transition-colors group-hover:text-cobalt-500">
+              <span className="label-sm mt-[2px] text-soot-400 transition-colors group-hover:text-cobalt-500">
                 TECH
               </span>
             </span>
@@ -77,7 +77,7 @@ export default function Nav() {
             ))}
           </div>
 
-          <div className="ml-auto flex items-center gap-3 lg:ml-0">
+          <div className="flex items-center gap-2.5 sm:gap-3">
             <span className="hidden items-center gap-2 border border-soot-950/15 bg-ivory-50 px-3 py-1.5 xl:inline-flex">
               <span className="relative flex h-1.5 w-1.5">
                 <span className="anim-ring absolute inline-flex h-full w-full rounded-full bg-pine-500" />
@@ -87,7 +87,7 @@ export default function Nav() {
             </span>
             <a
               href="#access"
-              className="btn-primary group hidden items-center gap-2 px-4 py-2.5 text-[13px] font-medium sm:inline-flex"
+              className="btn-primary group hidden items-center gap-2 px-3.5 py-2 text-[12.5px] font-medium sm:inline-flex sm:px-4 sm:py-2.5 sm:text-[13px]"
             >
               Request access
               <IconArrowUpRight
@@ -98,7 +98,8 @@ export default function Nav() {
             <button
               onClick={() => setOpen((o) => !o)}
               aria-label="Toggle navigation"
-              className="inline-flex h-10 w-10 items-center justify-center border border-soot-950/20 text-soot-700 transition-colors hover:border-cobalt-500 hover:text-cobalt-500 lg:hidden"
+              aria-expanded={open}
+              className="inline-flex h-10 w-10 shrink-0 items-center justify-center border border-soot-950/20 text-soot-700 transition-colors hover:border-cobalt-500 hover:text-cobalt-500 lg:hidden"
             >
               {open ? <IconClose size={18} /> : <IconMenu size={18} />}
             </button>
@@ -113,30 +114,43 @@ export default function Nav() {
         </div>
       </div>
 
+      {/* Mobile Drawer */}
       <div
-        className={`overflow-hidden border-b border-soot-950/12 bg-ivory-50/97 backdrop-blur-xl transition-[max-height,opacity] duration-500 lg:hidden ${
-          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        className={`overflow-hidden border-b border-soot-950/12 bg-ivory-50/98 shadow-xl backdrop-blur-xl transition-all duration-400 lg:hidden ${
+          open ? "max-h-[calc(100vh-68px)] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="flex flex-col px-5 py-3 sm:px-8">
-          {LINKS.map((l, i) => (
+        <div className="scroll-touch flex max-h-[calc(100vh-80px)] flex-col overflow-y-auto px-5 py-4 sm:px-8">
+          {LINKS.map((l, i) => {
+            const isActive = active === l.href.slice(1);
+            return (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className={`flex items-baseline gap-4 border-b border-soot-950/[0.08] py-3.5 transition-colors last:border-0 ${
+                  isActive ? "text-cobalt-500 font-medium" : "text-soot-900"
+                }`}
+              >
+                <span className={`label-sm ${isActive ? "text-cobalt-500" : "text-soot-400"}`}>
+                  0{i + 1}
+                </span>
+                <span className="font-display text-xl text-soot-950">{l.label}</span>
+                {isActive && (
+                  <span className="ml-auto label-sm text-cobalt-500">active</span>
+                )}
+              </a>
+            );
+          })}
+          <div className="pt-4 pb-2">
             <a
-              key={l.href}
-              href={l.href}
+              href="#access"
               onClick={() => setOpen(false)}
-              className="flex items-baseline gap-4 border-b border-soot-950/[0.08] py-3.5 last:border-0"
+              className="btn-primary block w-full px-4 py-3.5 text-center text-sm font-medium"
             >
-              <span className="label-sm text-soot-400">0{i + 1}</span>
-              <span className="font-display text-xl text-soot-950">{l.label}</span>
+              Request early access →
             </a>
-          ))}
-          <a
-            href="#access"
-            onClick={() => setOpen(false)}
-            className="btn-primary mt-4 mb-2 px-4 py-3 text-center text-sm font-medium"
-          >
-            Request early access
-          </a>
+          </div>
         </div>
       </div>
     </header>
